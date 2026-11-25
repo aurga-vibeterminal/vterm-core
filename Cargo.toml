@@ -1,0 +1,43 @@
+[package]
+name = "vterm-core"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[features]
+default = ["pty"]
+pty = ["dep:portable-pty"]
+
+[dependencies]
+vterm-common = { workspace = true }
+bytes = "1"
+
+# Async runtime
+tokio = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Error handling
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+
+# Logging
+tracing = { workspace = true }
+
+# Terminal emulator (standalone crate, embedded in mobile apps)
+vterm-emulator = { workspace = true }
+
+# Encryption (Noise Protocol)
+snow = { workspace = true }
+
+# PTY
+portable-pty = { workspace = true, optional = true }
+
+# Async trait
+async-trait = "0.1"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
